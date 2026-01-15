@@ -6,7 +6,7 @@ package cifrasyletras;
 
 import java.util.List;
 import java.util.Random;
-        
+import java.io.IOException;
 /**
  *
  * @author isa
@@ -113,7 +113,10 @@ public class JuegoCifras {
             }
 
             if (!existe2 || !existe1) {
-                System.out.println("Elemento no encontrado.");
+                    System.out.println("##################");
+                    System.out.println("Elemento no encontrado");
+                    System.out.println("##################");
+                    System.out.println(" ");
                 continue;
             }
 
@@ -136,7 +139,10 @@ public class JuegoCifras {
                     resultado = elegido1 / elegido2;
                     break;
                 default:
+                    System.out.println("##################");
                     System.out.println("Operación invalida");
+                    System.out.println("##################");
+                    System.out.println(" ");
                     continue;
             }
             
@@ -144,21 +150,28 @@ public class JuegoCifras {
             valuesJugadas[indice2] = 0;      
             System.out.println("Este es tu resultado actual: " + resultado);
 
-            System.out.println("Disponibles: ");
-            for (int j : valuesJugadas) {
-                if (j == 0) break;
-                System.out.print(j);
-                System.out.print(" ");
-            }
-            System.out.println(" ");
-            System.out.println();
+            // System.out.println("Disponibles: ");
+            // for (int j : valuesJugadas) {
+            //     if (j == 0) break;
+            //     System.out.print(j);
+            //     System.out.print(" ");
+            // }
+            // System.out.println(" ");
+            // System.out.println();
             
             operacionesRealizadas++;
             
             if(operacionesRealizadas < 5){
                 System.out.println("¿Quieres plantarte en este resultado? 1.Sí 2.No");
-                int opcion = lt.llegirEnter();
-                if(opcion==1) continuar = false;
+                try{
+                    int opcion = lt.llegirEnter();
+                    if(opcion==1) continuar = false;
+                } catch(Exception e){
+                    System.out.println("##################");
+                    System.out.println("Si no has seleccionado nada supongo que quieres seguir.");
+                    System.out.println("##################");
+                    System.out.println(" ");
+                }
             }
         
         }
@@ -185,6 +198,20 @@ public class JuegoCifras {
     }
     
     private int turnoCPU(int[] values,  int objetivo){
+        
+        int r1=0, r2=0, r3=0, r4=0, r5=0;
+        boolean vu1=false,vu2=false,vu3=false,vu4=false,vu5=false,vu6=false;
+        boolean ru1=false, ru2=false, ru3=false, ru4=false, ru5=false;
+        
+        int v1 = values[0];
+        int v2 = values[1];
+        int v3 = values[2];
+        int v4 = values[3];
+        int v5 = values[4];
+        int v6 = values[5];
+
+
+
         int[] valuesJugadas = values;
         int operacionesRealizadas = 0;
         int ResultadoCPU = 0;
@@ -198,7 +225,7 @@ public class JuegoCifras {
                 System.out.print(" ");
             }
             System.out.println(" ");
-
+        
 
         while(operacionesRealizadas < 5){
             
