@@ -27,7 +27,7 @@ public class JuegoCifras {
         
     }
     
-    public int jugar(){
+    public void jugar(){
         int puntosJugador = 0;
         int puntosCPU = 0;
         
@@ -65,7 +65,6 @@ public class JuegoCifras {
         else if(puntosJugador>puntosCPU) System.out.println("Has perdido...jo");
         else System.out.println("¡Empate! Algo es algo, ¿no?");
         
-        return puntosJugador - puntosCPU;
     }
     
     private int turnoJugador(int[] values, int objetivo){
@@ -198,8 +197,6 @@ public class JuegoCifras {
     }
     
     private int turnoCPU(int[] values,  int objetivo){
-        
-        int r1=0, r2=0, r3=0, r4=0, r5=0;
         boolean vu1=false,vu2=false,vu3=false,vu4=false,vu5=false,vu6=false;
         boolean ru1=false, ru2=false, ru3=false, ru4=false, ru5=false;
         

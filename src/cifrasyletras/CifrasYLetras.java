@@ -102,8 +102,8 @@ public class CifrasYLetras {
         JuegoCifras juegoCifras = new JuegoCifras(nRondas);
         juegoCifras.jugar();
         
-        JuegoLetras juegoLetras = new JuegoLetras(nRondas);
-        juegoLetras.jugar();
+        // JuegoLetras juegoLetras = new JuegoLetras(nRondas);
+        // juegoLetras.jugar();
     }
     
     
