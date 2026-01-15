@@ -61,8 +61,8 @@ public class JuegoCifras {
         System.out.println("Jugador: "+puntosJugador+" puntos.");
         System.out.println("CPU: "+puntosCPU+" puntos.");
         
-        if(puntosJugador>puntosCPU) System.out.println("¡¡Has ganado!!");
-        else if(puntosJugador<puntosCPU) System.out.println("Has perdido...jo");
+        if(puntosJugador<puntosCPU) System.out.println("¡¡Has ganado!!");
+        else if(puntosJugador>puntosCPU) System.out.println("Has perdido...jo");
         else System.out.println("¡Empate! Algo es algo, ¿no?");
         
         return puntosJugador - puntosCPU;
@@ -527,17 +527,18 @@ public class JuegoCifras {
             if(vu1 && vu2 && vu3 && vu4 && vu5 && vu6) break;
         }
         
-        System.out.print("Resultado final CPU: " + ResultadoCPU);
+        System.out.println("Resultado final CPU: " + ResultadoCPU);
         return ResultadoCPU;
     }
     
     private int calcularPuntos(int objetivo, int Resultado){
         int diferencia = Math.abs(objetivo-Resultado);
         
-        if(diferencia == 0) return 10;
-        else if(diferencia <=5) return 7;
-        else if(diferencia <= 10) return 5;
-        else return 0;
+        // if(diferencia == 0) return 10;
+        // else if(diferencia <=5) return 7;
+        // else if(diferencia <= 10) return 5;
+        // else return 0;
+        return diferencia;
     }
     
 }
