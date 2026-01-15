@@ -197,6 +197,9 @@ public class JuegoCifras {
     }
     
     private int turnoCPU(int[] values,  int objetivo){
+                
+        int r1=0, r2=0, r3=0, r4=0, r5=0;
+
         boolean vu1=false,vu2=false,vu3=false,vu4=false,vu5=false,vu6=false;
         boolean ru1=false, ru2=false, ru3=false, ru4=false, ru5=false;
         
