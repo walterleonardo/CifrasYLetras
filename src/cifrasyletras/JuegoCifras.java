@@ -37,31 +37,17 @@ public class JuegoCifras {
             System.out.println("\n¡Comencemos con Cifras!");
             System.out.println("   ¡A Jugar!   ");
             System.out.println("--- Ronda "+i+" ---");
+            System.out.println(" ");
             int[] values = new int[6];
             for (i=0; i < 6; i++) {
                 values[i] = bolsa.extraerCifra();
             }
-            int v1 = bolsa.extraerCifra();
-            int v2 = bolsa.extraerCifra();
-            int v3 = bolsa.extraerCifra();
-            int v4 = bolsa.extraerCifra();
-            int v5 = bolsa.extraerCifra();
-            int v6 = bolsa.extraerCifra();
+
             int objetivo = 100 + random.nextInt(900);
             
-            // System.out.print("Números disponibles: ");
-            // for (int j : values) {
-            //     if (j == 0) break;
-            //     System.out.print(j);
-            //     System.out.print(" ");
-            // }
-            System.out.println(" ");
             
-            //System.out.println("Números disponibles: " +v1+", "+v2+", "+v3+", "+v4+", "+v5+", "+v6);
-            //System.out.println("Objetivo: "+objetivo);
-            
-            int resultadoJugador = turnoJugador(v1,v2,v3,v4,v5,v6,values,objetivo);
-            int resultadoCPU = turnoCPU(v1,v2,v3,v4,v5,v6, objetivo);
+            int resultadoJugador = turnoJugador(values,objetivo);
+            int resultadoCPU = turnoCPU(values,objetivo);
             
             puntosJugador += calcularPuntos(objetivo, resultadoJugador);
             puntosCPU += calcularPuntos(objetivo, resultadoCPU);
@@ -82,10 +68,7 @@ public class JuegoCifras {
         return puntosJugador - puntosCPU;
     }
     
-    private int turnoJugador(int v1, int v2, int v3, int v4, int v5, int v6, int[] values, int objetivo){
-        int r1=0, r2=0, r3=0, r4=0, r5=0;
-        boolean vu1=false,vu2=false,vu3=false,vu4=false,vu5=false,vu6=false;
-        boolean ru1=false, ru2=false, ru3=false, ru4=false, ru5=false;
+    private int turnoJugador(int[] values, int objetivo){
         int[] valuesJugadas = values;
         int operacionesRealizadas = 0;
         int resultado = 0;
@@ -105,12 +88,8 @@ public class JuegoCifras {
             int elegido1 = lt.llegirEnter();
             int elegido2 = lt.llegirEnter();
         
-            int indice1 = 0;
-            int indice2 = 0;
-            
-            
-            
-            
+            int indice1 = -1;
+            int indice2 = -1;
             
             int cuenta = 0;
             boolean existe1 = false;
@@ -133,26 +112,11 @@ public class JuegoCifras {
                 cuenta ++;
             }
 
-
-            // for (int i = 0; i < 6; i++) {
-            //     if (values[i] == elegido1) {
-            //         indice1 = i;
-            //         break; // Detiene el bucle al encontrarlo
-            //     }
-            //     if (values[i] == elegido2) {
-            //         indice1 = i;
-            //         break; // Detiene el bucle al encontrarlo
-            //     }
-            // }
-
             if (!existe2 || !existe1) {
                 System.out.println("Elemento no encontrado.");
                 continue;
             }
-            // if(!numDis(elegido1,v1,v2,v3,v4,v5,v6,vu1,vu2,vu3,vu4,vu5,vu6,r1,r2,r3,r4,r5,ru1,ru2,ru3,ru4,ru5)||!numDis(elegido2,v1,v2,v3,v4,v5,v6,vu1,vu2,vu3,vu4,vu5,vu6,r1,r2,r3,r4,r5,ru1,ru2,ru3,ru4,ru5)){
-            //     System.out.println("Uno de los números no está disponible, elige otros. ");
-            //     continue;
-            // }
+
         
             System.out.println("Elige la operación: 1.+ 2.- 3.* 4./");
             int operacion = lt.llegirEnter();
@@ -177,22 +141,9 @@ public class JuegoCifras {
             }
             
             valuesJugadas[indice1] = resultado;
-            valuesJugadas[indice2] = 0;
-            // if(!ru1){r1=resultado; ru1=true; }
-            // else if(!ru2){r2=resultado; ru2=true; }
-            // else if(!ru3){r3=resultado; ru3=true; }
-            // else if(!ru4){r4=resultado; ru4=true; }
-            // else if(!ru5){r5=resultado; ru5=true; }
-            
+            valuesJugadas[indice2] = 0;      
             System.out.println("Este es tu resultado actual: " + resultado);
-        
-            // if(elegido1 == v1 || elegido2 == v1) vu1 = true;
-            // if(elegido1 == v2 || elegido2 == v2) vu2 = true;
-            // if(elegido1 == v3 || elegido2 == v3) vu3 = true;
-            // if(elegido1 == v4 || elegido2 == v4) vu4 = true;
-            // if(elegido1 == v5 || elegido2 == v5) vu5 = true;
-            // if(elegido1 == v6 || elegido2 == v6) vu6 = true;
-            
+
             System.out.println("Disponibles: ");
             for (int j : valuesJugadas) {
                 if (j == 0) break;
@@ -200,19 +151,6 @@ public class JuegoCifras {
                 System.out.print(" ");
             }
             System.out.println(" ");
-            // if(!vu1) System.out.print(v1 + " ");
-            // if(!vu2) System.out.print(v2 + " ");
-            // if(!vu3) System.out.print(v3 + " ");
-            // if(!vu4) System.out.print(v4 + " ");
-            // if(!vu5) System.out.print(v5 + " ");
-            // if(!vu6) System.out.print(v6 + " ");
-            
-            // if(!ru1) System.out.print(r1 + " ");
-            // if(!ru2) System.out.print(r2 + " ");
-            // if(!ru3) System.out.print(r3 + " ");
-            // if(!ru4) System.out.print(r4 + " ");
-            // if(!ru5) System.out.print(r5 + " ");
-            
             System.out.println();
             
             operacionesRealizadas++;
@@ -246,19 +184,22 @@ public class JuegoCifras {
         return false;
     }
     
-    private int turnoCPU(int v1, int v2, int v3, int v4, int v5, int v6, int objetivo){
-        
-        int r1=0, r2=0, r3=0, r4=0, r5=0;
-        boolean vu1=false,vu2=false,vu3=false,vu4=false,vu5=false,vu6=false;
-        boolean ru1=false, ru2=false, ru3=false, ru4=false, ru5=false;
-        
+    private int turnoCPU(int[] values,  int objetivo){
+        int[] valuesJugadas = values;
         int operacionesRealizadas = 0;
         int ResultadoCPU = 0;
         
         System.out.println("\n --- Turno de la CPU --- ");
-        System.out.println("Objetivo: "+ objetivo);
-        System.out.println("números disponibles: "+v1+" "+v2+" "+v3+" "+v4+" "+v5+" "+v6);
-        
+            System.out.println("Objetivo: "+objetivo);
+            System.out.print("Números disponibles: ");
+            for (int j : valuesJugadas) {
+                if (j == 0) continue;
+                System.out.print(j);
+                System.out.print(" ");
+            }
+            System.out.println(" ");
+
+
         while(operacionesRealizadas < 5){
             
             int mejorResultado = 0;
