@@ -99,11 +99,10 @@ public class CifrasYLetras {
     private void iniciarJuegos(int nRondas){
         System.out.println("\n Comienza la partida con " + nRondas + " rondas.");
         
-        JuegoCifras juegoCifras = new JuegoCifras(nRondas);
-        juegoCifras.jugar();
-        
-        // JuegoLetras juegoLetras = new JuegoLetras(nRondas);
-        // juegoLetras.jugar();
+        //JuegoCifras juegoCifras = new JuegoCifras(nRondas);
+        //juegoCifras.jugar();
+        JuegoLetras juegoLetras = new JuegoLetras(nRondas);
+        juegoLetras.jugar();
     }
     
     

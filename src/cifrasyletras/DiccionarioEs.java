@@ -4,9 +4,8 @@
  */
 package cifrasyletras;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.File;
+import java.util.Scanner;
 
 /**
  *
@@ -14,34 +13,59 @@ import java.io.IOException;
  */
 public class DiccionarioEs {
     
-    private Palabra p1,p2,p3,p4,p5,p6,p7,p8,p9,p10;
-    private int total;
-    
+    //private Palabra p1,p2,p3,p4,p5,p6,p7,p8,p9,p10;
+    //private int total;
+    String[] dict;
+
     public DiccionarioEs(){
         leer();
     }
     
-    private void leer(){
+    public String[] leer(){
         try{
-            BufferedReader br = new BufferedReader(new FileReader("src/cifrasyletras/Data/dic_es.txt"));
-            String linea;
-            int i = 1;
+            int total = 0;
             
-            while((linea = br.readLine()) != null){
-                guardar(i, new Palabra(linea));
-                i++;
+            System.out.println("Cargamos el diccionario ");
+
+            File archivo = new File("src/cifrasyletras/Data/dic_es.txt");
+
+            Scanner scannerContador = new Scanner(archivo);
+            int numeroPalabra = 0;
+            while (scannerContador.hasNextLine()) {
+                total++;
+                scannerContador.nextLine();
             }
-            total = i-1;
-            br.close();
-            
+            scannerContador.close();
+
+            Scanner scanner = new Scanner(archivo);
+            System.out.println("***********************************");  
+            System.out.println("Palabras en el diccionario:" + total);
+
+            dict = new String[total];
+
+            while (scanner.hasNextLine()) {
+                String palabra = scanner.nextLine();
+                if (palabra != null) {
+                    dict[numeroPalabra] = palabra;
+                    numeroPalabra++;
+                }
+            }
+            scanner.close();
+
+
+
         }catch(Exception e){
             System.out.println("Error diccionario");
         }
-        
+        return dict;
     }
     
-    private void guardar(int i, Palabra p){
-        
+    public boolean  buscarPalabra(char[] palabraAbuscar){
+        for (String palabra : dict) {
+                if (palabra != null && palabra.contentEquals(palabraAbuscar.toString()))System.out.println("PALABRA ENCONTRADA " + palabra);
+        return true;
+            }
+            return false;
     }
     
 }
